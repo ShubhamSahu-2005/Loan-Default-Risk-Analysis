@@ -41,7 +41,7 @@ loan-default-analysis/
 
 │   ├── data_cleaning.ipynb            ← data validation + cleaning
 
-│   └── eda_analysis.ipynb             ← EDA + all 5 charts
+│   └── eda_analysis.ipynb             ← EDA + all 6 charts
 
 ├── sql/
 
@@ -65,7 +65,9 @@ loan-default-analysis/
 
 │       ├── chart4_employment.png
 
-│       └── chart5_correlation_heatmap.png
+│       ├── chart5_correlation_heatmap.png
+
+│       └── policy_tradeoff_overlay.png
 
 └── README.md
 ---
@@ -149,15 +151,41 @@ eventual default. An early intervention system triggered at
 
 Renters default at 2.5x the rate of homeowners.
 
+### 7. Policy Simulation: Approval Rate vs Default Rate by Threshold
+
+A credit score policy simulation was built to quantify the trade-off
+between business volume (approval rate) and portfolio risk (default rate)
+across four minimum credit score thresholds:
+
+| Min Credit Score | Approval Rate | Portfolio Default Rate |
+|---|---|---|
+| 600 | 80.70% | 18.35% 🔴 |
+| 650 | 65.22% | 15.82% 🔴 |
+| 700 | 52.75% | 12.93% 🟠 |
+| 750 | 38.44% | 11.69% ✅ |
+
+Only the 750 threshold meets the 12% company target, but at
+the cost of rejecting ~62% of applicants. The 700 threshold
+achieves near-target default rates (12.93%) while still approving
+over half the applicant pool — offering the best risk-volume balance.
+
 ---
 
 ## Recommendations
 
 | # | Recommendation | Expected Impact |
 |---|---|---|
-| 1 | Set minimum credit score at **700** | Eliminates highest-risk buckets |
+| 1 | Set minimum credit score at **700** | Reduces default rate to ~12.93% while approving 52.75% of applicants |
 | 2 | Cap DTI at **35%** for auto-approval | Keeps defaults near 10.53% |
 | 3 | Build early delinquency alert at **15 days** | Prevents defaults before they occur |
+
+### Policy Threshold Decision Framework
+
+| Priority | Recommended Threshold | Rationale |
+|---|---|---|
+| **Growth-first** | 600–650 | Maximize approvals; accept higher risk |
+| **Balanced** | 650–700 | Moderate risk reduction with acceptable volume |
+| **Risk-first** | 700–750 | Aggressively cut defaults; accept reduced volume |
 
 ---
 
