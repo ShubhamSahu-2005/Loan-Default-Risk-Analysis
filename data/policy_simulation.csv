@@ -1,0 +1,5 @@
+Min Credit Score,Approved Loans,Rejected Loans,Approval Rate (%),Approved Defaults,Portfolio Default Rate (%),Defaults Prevented,Good Borrowers Rejected,Rejected Loan Volume ($),Estimated Loss Avoided ($)
+600,485,116,80.7,89,18.35,57,59,2723900.0,1376600.0
+650,392,209,65.22,62,15.82,84,125,4509200.0,1901000.0
+700,317,284,52.75,41,12.93,105,179,6211700.0,2450900.0
+750,231,370,38.44,27,11.69,119,251,8133300.0,2715800.0
