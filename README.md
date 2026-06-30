@@ -169,6 +169,22 @@ the cost of rejecting ~62% of applicants. The 700 threshold
 achieves near-target default rates (12.93%) while still approving
 over half the applicant pool — offering the best risk-volume balance.
 
+
+## Statistical Validation
+
+To confirm the relationships identified in the EDA were not due to random chance, Chi-Square tests of independence were run on all major categorical risk factors against default status (α = 0.05).
+
+| Feature | Chi-Square | P-value | Result |
+|---|---|---|---|
+| Credit Score Bucket | 63.59 | < 0.000001 | **Significant** ✅ |
+| DTI Bucket | 30.05 | 0.000001 | **Significant** ✅ |
+| Home Ownership | 8.25 | 0.0162 | **Significant** ✅ |
+| Employment Status | 0.56 | 0.9674 | Not Significant ❌ |
+| Loan Purpose | 4.16 | 0.9009 | Not Significant ❌ |
+
+**Key takeaway:** Credit score, DTI ratio, and home ownership are all statistically confirmed drivers of default risk — credit score showing the strongest association (χ² = 63.59), validating it as the primary lever for the recommended underwriting policy. Employment status and loan purpose show no statistically significant association with default, confirming that the elevated default rate is a systemic underwriting issue rather than being driven by what the loan is for or the borrower's employment type.
+
+This statistical validation strengthens the case for the credit-score-based policy threshold (Recommendation #1), since the relationship driving it is not a visual artifact but a confirmed, non-random pattern in the data.
 ---
 
 ## Recommendations
